@@ -20,14 +20,14 @@ SystemTempMonitor is a handy shell script that keeps tabs on your computer's cru
 1. Ensure that the appropriate NVIDIA driver is installed.
 2. Add the script to your system's path for easy access as a command.
    
-   `sudo cp SystemTempMonitor.sh /usr/local/bin/SystemTempMonitor`
+   `sudo cp SystemTempMonitor.sh /usr/local/bin/temperatures`
    
-   `sudo chmod +x /usr/local/bin/SystemTempMonitor`
+   `sudo chmod +x /usr/local/bin/temperatures`
    
 3. Run the script:
    `SystemTempMonitor`.
 4. View CPU, GPU, and SSD temperatures in real-time using the `watch` command:
-    `watch -n 1 SystemTempMonitor`
+    `watch -n 1 temperatures`
 
 ## 🤝 **Contributing**
 
