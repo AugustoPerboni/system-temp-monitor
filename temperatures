@@ -1,0 +1,29 @@
+#! /bin/bash
+
+# If the lm-sensors is not installed install it using apt
+if ! command -v sensors > /dev/null 2>&1; then
+    sudo apt install lm-sensors
+fi
+
+echo -e '\n-----------------------------'
+echo -e '\n SYSTEM TEMPERATURE MONITOR'
+
+# Get the GPU temperature from nvidia-smi status
+gpu_temperature=$(nvidia-smi | grep "Default" | grep -o '\<\w*C\w*\>')
+
+echo -e '\n	GPU -> ' $gpu_temperature
+
+# Get the CPU temperature
+cpu_temperature=$(sensors | grep 'Tctl' | awk '{print $2}')
+cpu_temperature=$(echo $cpu_temperature | grep -oP '\+\K\d+')
+
+echo -e '\n	CPU -> ' $cpu_temperature'C'
+
+# Get the SSD M2 temperature
+
+ssd_temperature=$(sensors | grep 'Composite' | awk {'print $2'})
+ssd_temperature=$(echo $ssd_temperature | grep -oP '\+\K\d+')
+
+echo -e '\n	SSD -> ' $ssd_temperature'C\n'
+
+echo '-----------------------------'
